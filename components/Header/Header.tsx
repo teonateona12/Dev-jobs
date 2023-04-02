@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <HeaderDiv
       sx={{
-        padding: { xs: "5%", md: "5% 10%" },
+        padding: { xs: "5% 5% 15% 5%", md: "5% 10% 10% 10%" },
         borderRadius: { md: "0px 0px 0px 100px" },
       }}
     >
