@@ -21,4 +21,5 @@ const FilterDiv = styled(Box)(() => ({
   justifyContent: "space-between",
   alignItems: "center",
   marginTop: "-5%",
+  borderRadius: "6px",
 }));
