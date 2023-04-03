@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import inputReducer from "./inputSlice";
+import searchReducer from "./searchSlice";
 
 const store = configureStore({
   reducer: {
-    inputValue: inputReducer,
+    search: searchReducer,
   },
 });
 

@@ -6,13 +6,36 @@ import styled from "@emotion/styled";
 
 export default function Home() {
   const inputValue = useSelector(
-    (store: { inputValue: { input: string } }) => store.inputValue
+    (store: { search: { input: string } }) => store.search.input
   );
-  console.log(inputValue);
-  const filteredArray =
-    inputValue.input === ""
-      ? data
-      : data.filter((item: any) => item.position.startsWith(inputValue.input));
+  const locationValue = useSelector(
+    (store: { search: { location: string } }) => store.search.location
+  );
+  const fullTimeValue = useSelector(
+    (store: { search: { fullTime: boolean } }) => store.search.fullTime
+  );
+  console.log(useSelector((store: any) => store));
+
+  const filter = () => {
+    const filteredTitle =
+      inputValue === ""
+        ? data
+        : data.filter((item) => item.position.includes(inputValue));
+    const filteredLocation =
+      locationValue === ""
+        ? filteredTitle
+        : filteredTitle.filter((item) => item.location.includes(locationValue));
+    const filterfullTime = !fullTimeValue
+      ? filteredLocation
+      : filteredLocation.filter((item) => item.contract === "Full Time");
+
+    return filterfullTime;
+  };
+  const filteredArray = filter();
+  // const filteredArray =
+  //   inputValue === ""
+  //     ? data
+  //     : data.filter((item) => item.position.includes(inputValue)) ;
   return (
     <Box>
       <Filter />
