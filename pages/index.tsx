@@ -3,8 +3,12 @@ import Filter from "@/components/Filter/Filter";
 import data from "../data.json";
 import { Box, Typography } from "@mui/material";
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Home() {
+  const router = useRouter();
+
   const inputValue = useSelector(
     (store: { search: { input: string } }) => store.search.input
   );
@@ -20,11 +24,15 @@ export default function Home() {
     const filteredTitle =
       inputValue === ""
         ? data
-        : data.filter((item) => item.position.includes(inputValue));
+        : data.filter((item) =>
+            item.position.toLowerCase().includes(inputValue.toLowerCase())
+          );
     const filteredLocation =
       locationValue === ""
         ? filteredTitle
-        : filteredTitle.filter((item) => item.location.includes(locationValue));
+        : filteredTitle.filter((item) =>
+            item.location.toLowerCase().includes(locationValue.toLowerCase())
+          );
     const filterfullTime = !fullTimeValue
       ? filteredLocation
       : filteredLocation.filter((item) => item.contract === "Full Time");
@@ -32,16 +40,14 @@ export default function Home() {
     return filterfullTime;
   };
   const filteredArray = filter();
-  // const filteredArray =
-  //   inputValue === ""
-  //     ? data
-  //     : data.filter((item) => item.position.includes(inputValue)) ;
+
   return (
     <Box>
       <Filter />
       <AllJobsContainer>
         {filteredArray.map((item) => (
           <JobContainer
+            onClick={() => router.push(`${item.company}`)}
             sx={{
               width: { xs: "100%", md: "47%", lg: "30%" },
             }}
