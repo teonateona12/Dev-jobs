@@ -5,12 +5,19 @@ import { Box, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 
 export default function Home() {
-  console.log(data);
+  const inputValue = useSelector(
+    (store: { inputValue: { input: string } }) => store.inputValue
+  );
+  console.log(inputValue);
+  const filteredArray =
+    inputValue.input === ""
+      ? data
+      : data.filter((item: any) => item.position.startsWith(inputValue.input));
   return (
     <Box>
       <Filter />
       <AllJobsContainer>
-        {data.map((item) => (
+        {filteredArray.map((item) => (
           <JobContainer
             sx={{
               width: { xs: "100%", md: "47%", lg: "30%" },
@@ -86,6 +93,7 @@ const LocationText = styled(Typography)(() => ({
   fontWeight: "700",
   marginTop: "15%",
 }));
+
 const OvalContainer = styled(Box)(() => ({
   background: "#6E8098",
   width: "4px",

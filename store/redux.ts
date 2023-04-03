@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import themeReducer from "./themeSlice";
+import inputReducer from "./inputSlice";
 
 const store = configureStore({
   reducer: {
-    theme: themeReducer,
+    inputValue: inputReducer,
   },
 });
 
