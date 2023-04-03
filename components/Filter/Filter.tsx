@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, Input } from "@mui/material";
 import styled from "@emotion/styled";
 import { useDispatch } from "react-redux";
 import {
@@ -26,16 +26,67 @@ export default function Filter() {
   return (
     <>
       <FilterDiv>
-        <input
-          onChange={(e) => setInput(e.target.value)}
-          type="text"
-          placeholder="Filter by title…"
-        ></input>
-        <img onClick={modalHeandler} src="assets/mobile/icon-filter.svg" />
-        <img
-          onClick={() => dispatch(updateInput(input))}
-          src="assets/search.svg"
-        />
+        <FilterCont>
+          <Input
+            sx={{
+              order: { md: "2" },
+            }}
+            onChange={(e) => {
+              setInput(e.target.value);
+            }}
+            type="text"
+            placeholder="Filter by title…"
+          ></Input>
+          <Box
+            sx={{
+              display: { md: "none" },
+              margin: "auto",
+            }}
+            component="img"
+            onClick={modalHeandler}
+            src="assets/mobile/icon-filter.svg"
+          />
+          <Box
+            sx={{
+              order: { md: "1" },
+            }}
+            component="img"
+            src="assets/search.svg"
+          />
+        </FilterCont>
+        <FilterCont sx={{ display: { xs: "none", md: "flex" } }}>
+          <SearchLocationDiv>
+            <img src="assets/searchLocation.svg" />
+            <input
+              onChange={(e) => setLocation(e.target.value)}
+              type="text"
+              placeholder="Filter by location…"
+            ></input>
+          </SearchLocationDiv>
+        </FilterCont>
+        <FilterCont sx={{ display: { xs: "none", md: "flex" } }}>
+          <SearchFullTime>
+            <input
+              onClick={() => setFullTime(!fullTime)}
+              type="checkbox"
+            ></input>
+            <Typography>Full Time Only</Typography>
+          </SearchFullTime>
+          <SearchButton
+            sx={{
+              width: { md: "40%" },
+              marginTop: { md: "0" },
+            }}
+            onClick={() => {
+              dispatch(updateInput(input));
+              dispatch(updatefullTime(fullTime));
+              dispatch(updateLocation(location));
+              setModal(false);
+            }}
+          >
+            Search
+          </SearchButton>
+        </FilterCont>
       </FilterDiv>
       {modal && (
         <ModalBackground ref={modalElement} onClick={handleModal}>
@@ -129,4 +180,10 @@ const SearchButton = styled(Button)(() => ({
   width: "100%",
   color: "#FFFFFF",
   marginTop: "20px",
+  fontWeight: "700",
+}));
+
+const FilterCont = styled(Box)(() => ({
+  display: "flex",
+  gap: "30px",
 }));
