@@ -16,15 +16,15 @@ export default function Header() {
         backgroundSize: "100%",
       }}
     >
-      <img src="assets/logos/devjobs.svg" />
+      <Box component="img" src="assets/logos/devjobs.svg" />
       <Box
         sx={{
           display: "flex",
         }}
       >
-        <img src="assets/logos/light.svg" />
+        <Box component="img" src="assets/logos/light.svg" />
         <Switch></Switch>
-        <img src="assets/logos/dark.svg" />
+        <Box component="img" src="assets/logos/dark.svg" />
       </Box>
     </HeaderDiv>
   );

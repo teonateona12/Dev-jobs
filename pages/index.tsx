@@ -17,7 +17,6 @@ export default function Home() {
   const fullTimeValue = useSelector(
     (store: { search: { fullTime: boolean } }) => store.search.fullTime
   );
-  console.log(useSelector((store: any) => store));
 
   const filter = () => {
     const filteredTitle =
@@ -56,7 +55,7 @@ export default function Home() {
                 backgroundColor: `${item.logoBackground}`,
               }}
             >
-              <img src={item.logo} />
+              <Box component="img" src={item.logo} />
             </LogoContainer>
             <TimeContainer>
               <GreyText>{item.postedAt}</GreyText>

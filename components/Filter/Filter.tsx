@@ -56,7 +56,7 @@ export default function Filter() {
         </FilterCont>
         <FilterCont sx={{ display: { xs: "none", md: "flex" } }}>
           <SearchLocationDiv>
-            <img src="assets/searchLocation.svg" />
+            <Box component="img" src="assets/searchLocation.svg" />
             <input
               onChange={(e) => setLocation(e.target.value)}
               type="text"
@@ -92,7 +92,7 @@ export default function Filter() {
         <ModalBackground ref={modalElement} onClick={handleModal}>
           <ModalDiv>
             <SearchLocationDiv>
-              <img src="assets/searchLocation.svg" />
+              <Box component="img" src="assets/searchLocation.svg" />
               <input
                 onChange={(e) => setLocation(e.target.value)}
                 type="text"
