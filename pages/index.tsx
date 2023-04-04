@@ -4,7 +4,6 @@ import data from "../data.json";
 import { Box, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
-import Link from "next/link";
 
 export default function Home() {
   const router = useRouter();
