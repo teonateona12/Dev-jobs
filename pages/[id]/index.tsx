@@ -117,9 +117,9 @@ export default function Route() {
           <Description>{detail?.requirements.content}</Description>
 
           <ul>
-            {detail?.requirements.items.map((item) => (
+            {detail?.requirements.items.map((item, index) => (
               <Description
-                key={item}
+                key={index}
                 sx={{
                   padding: "0 5%",
                 }}
@@ -134,9 +134,9 @@ export default function Route() {
           <Description>{detail?.role.content}</Description>
 
           <ol>
-            {detail?.role.items.map((item) => (
+            {detail?.role.items.map((item, index) => (
               <Description
-                key={item}
+                key={index}
                 sx={{
                   padding: "0 5%",
                 }}
