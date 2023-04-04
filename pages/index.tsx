@@ -45,6 +45,7 @@ export default function Home() {
       <AllJobsContainer>
         {filteredArray.map((item) => (
           <JobContainer
+            key={item.company}
             onClick={() => router.push(`${item.company}`)}
             sx={{
               width: { xs: "100%", md: "47%", lg: "30%" },
