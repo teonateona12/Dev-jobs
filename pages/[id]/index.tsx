@@ -19,7 +19,7 @@ import {
   Requirements,
   SiteButton,
   TimeContainer,
-} from "./style";
+} from "../../styles/style";
 import Link from "next/link";
 
 export default function Route() {
