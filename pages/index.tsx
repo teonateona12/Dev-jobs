@@ -5,9 +5,9 @@ import { Box, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 
-export default function Home() {
+export default function Home({ activeTheme }: any) {
+  console.log(activeTheme);
   const router = useRouter();
-
   const inputValue = useSelector(
     (store: { search: { input: string } }) => store.search.input
   );
@@ -40,8 +40,12 @@ export default function Home() {
   const filteredArray = filter();
 
   return (
-    <Box>
-      <Filter />
+    <Box
+      sx={{
+        backgroundColor: activeTheme.palette.primary.main,
+      }}
+    >
+      <Filter activeTheme={activeTheme} />
       <AllJobsContainer>
         {filteredArray.map((item, index) => (
           <JobContainer
@@ -49,6 +53,7 @@ export default function Home() {
             onClick={() => router.push(`${item.company}`)}
             sx={{
               width: { xs: "100%", md: "47%", lg: "30%" },
+              backgroundColor: activeTheme.palette.secondary.main,
             }}
           >
             <LogoContainer
@@ -63,7 +68,7 @@ export default function Home() {
               <OvalContainer></OvalContainer>
               <GreyText>{item.contract}</GreyText>
             </TimeContainer>
-            <PositionText>{item.position}</PositionText>
+            <PositionText variant="h1">{item.position}</PositionText>
             <GreyText>{item.company}</GreyText>
             <LocationText>{item.location}</LocationText>
           </JobContainer>
@@ -73,7 +78,6 @@ export default function Home() {
   );
 }
 const JobContainer = styled(Box)(() => ({
-  backgroundColor: "#FFFFFF",
   padding: "0 5% 5% 5%",
   borderRadius: "6px",
 }));
@@ -109,7 +113,6 @@ const GreyText = styled(Typography)(() => ({
 }));
 
 const PositionText = styled(Typography)(() => ({
-  color: "#19202D",
   fontSize: "20px",
   fontWeight: "700",
   margin: "2% 0",

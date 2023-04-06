@@ -1,8 +1,10 @@
 import React from "react";
-import { Box, Switch } from "@mui/material";
+import { Box, Button, Switch } from "@mui/material";
 import { HeaderDiv } from "./style";
-
-export default function Header() {
+type HomeProps = {
+  toggleTheme?: React.MouseEventHandler<HTMLButtonElement>;
+};
+export default function Header(props: HomeProps) {
   return (
     <HeaderDiv
       sx={{
@@ -23,7 +25,7 @@ export default function Header() {
         }}
       >
         <Box component="img" src="assets/logos/light.svg" />
-        <Switch></Switch>
+        <Switch onClick={props.toggleTheme} color={"info"}></Switch>
         <Box component="img" src="assets/logos/dark.svg" />
       </Box>
     </HeaderDiv>

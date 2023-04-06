@@ -8,7 +8,7 @@ import {
   updatefullTime,
 } from "@/store/searchSlice";
 
-export default function Filter() {
+export default function Filter({ activeTheme }: any) {
   const dispatch = useDispatch();
   const [input, setInput] = useState<string>("");
   const [location, setLocation] = useState<string>("");
@@ -24,8 +24,12 @@ export default function Filter() {
     }
   };
   return (
-    <>
-      <FilterDiv>
+    <Box>
+      <FilterDiv
+        sx={{
+          backgroundColor: activeTheme.palette.secondary.main,
+        }}
+      >
         <FilterCont>
           <Input
             sx={{
@@ -90,14 +94,21 @@ export default function Filter() {
       </FilterDiv>
       {modal && (
         <ModalBackground ref={modalElement} onClick={handleModal}>
-          <ModalDiv>
+          <ModalDiv
+            sx={{
+              backgroundColor: activeTheme.palette.secondary.main,
+            }}
+          >
             <SearchLocationDiv>
               <Box component="img" src="assets/searchLocation.svg" />
-              <input
+              <Input
+                sx={{
+                  backgroundColor: activeTheme.palette.secondary.main,
+                }}
                 onChange={(e) => setLocation(e.target.value)}
                 type="text"
                 placeholder="Filter by location…"
-              ></input>
+              ></Input>
             </SearchLocationDiv>
             <Box
               sx={{
@@ -130,12 +141,11 @@ export default function Filter() {
           </ModalDiv>
         </ModalBackground>
       )}
-    </>
+    </Box>
   );
 }
 
 const FilterDiv = styled(Box)(() => ({
-  backgroundColor: " #FFFFFF",
   width: "80%",
   margin: "auto",
   padding: "16px",
@@ -150,6 +160,7 @@ const ModalBackground = styled(Box)(() => ({
   width: "100vw",
   height: "100vh",
   backgroundColor: "rgba(0, 0, 0, 0.5)",
+
   position: "absolute",
   display: "flex",
   justifyContent: "center",
@@ -158,7 +169,6 @@ const ModalBackground = styled(Box)(() => ({
 }));
 
 const ModalDiv = styled(Box)(() => ({
-  backgroundColor: " #FFFFFF",
   width: "80%",
   borderRadius: "6px",
 }));

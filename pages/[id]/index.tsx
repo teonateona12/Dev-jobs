@@ -1,8 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import data from "../../data.json";
-import Image from "next/image";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import {
   ApplyButton,
   ApplyButtonDiv,
@@ -22,18 +21,23 @@ import {
 } from "../../styles/style";
 import Link from "next/link";
 
-export default function Route() {
+export default function Route({ activeTheme }: any) {
   const router = useRouter();
   const { id } = router.query;
   const detail = data.find((item) => id === item.company);
   return (
-    <>
+    <Box
+      sx={{
+        backgroundColor: activeTheme.palette.primary.main,
+      }}
+    >
       <CompanyDiv
         sx={{
           flexDirection: { xs: "column", md: "row" },
           padding: { xs: " 0 5% 5% 5%", md: "0 5% 0 0" },
           justifyContent: { md: "space-between" },
           width: { xs: "80%", md: "60%" },
+          backgroundColor: activeTheme.palette.secondary.main,
         }}
       >
         <Box
@@ -59,7 +63,7 @@ export default function Route() {
               margin: { md: "auto 5%" },
             }}
           >
-            <CompanyName>{detail?.company}</CompanyName>
+            <CompanyName variant="h1">{detail?.company}</CompanyName>
             <CompanySite>{`${detail?.company.toLowerCase()}.com`}</CompanySite>
           </Box>
         </Box>
@@ -74,6 +78,7 @@ export default function Route() {
       <JobDiv
         sx={{
           width: { xs: "80%", md: "60%" },
+          backgroundColor: activeTheme.palette.secondary.main,
         }}
       >
         <Box
@@ -89,7 +94,7 @@ export default function Route() {
               <OvalContainer></OvalContainer>
               <GreyText>{detail?.contract}</GreyText>
             </TimeContainer>
-            <PositionText>{detail?.position}</PositionText>
+            <PositionText variant="h1">{detail?.position}</PositionText>
 
             <Box>
               <LocationText>{detail?.location}</LocationText>
@@ -113,7 +118,7 @@ export default function Route() {
           }}
         >
           <Description>{detail?.description}</Description>
-          <Requirements>Requirements</Requirements>
+          <Requirements variant="h1">Requirements</Requirements>
           <Description>{detail?.requirements.content}</Description>
 
           <ul>
@@ -129,7 +134,7 @@ export default function Route() {
             ))}
           </ul>
 
-          <Requirements>What You Will Do</Requirements>
+          <Requirements variant="h1">What You Will Do</Requirements>
 
           <Description>{detail?.role.content}</Description>
 
@@ -147,7 +152,11 @@ export default function Route() {
           </ol>
         </Box>
       </JobDiv>
-      <ApplyButtonDiv>
+      <ApplyButtonDiv
+        sx={{
+          backgroundColor: activeTheme.palette.secondary.main,
+        }}
+      >
         <ApplyButton
           onClick={() => router.push(`${detail?.apply}`)}
           sx={{
@@ -159,6 +168,6 @@ export default function Route() {
           Apply Now
         </ApplyButton>
       </ApplyButtonDiv>
-    </>
+    </Box>
   );
 }

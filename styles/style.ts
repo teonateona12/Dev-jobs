@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { Box, Button, Typography } from "@mui/material";
 
 export const CompanyDiv = styled(Box)(() => ({
-  backgroundColor: "#FFFFFF",
   borderRadius: "6px",
   margin: "auto",
   marginTop: "-5%",
@@ -29,7 +28,6 @@ export const SiteButton = styled(Button)(() => ({
 export const CompanyName = styled(Typography)(() => ({
   fontSize: "20px",
   fontWeight: "700",
-  color: "#19202D",
 }));
 
 export const CompanySite = styled(Typography)(() => ({
@@ -39,7 +37,6 @@ export const CompanySite = styled(Typography)(() => ({
 }));
 
 export const JobDiv = styled(Box)(() => ({
-  backgroundColor: "#FFFFFF",
   borderRadius: "6px",
   width: "80%",
   margin: "auto",
@@ -66,7 +63,6 @@ export const OvalContainer = styled(Box)(() => ({
 }));
 
 export const PositionText = styled(Typography)(() => ({
-  color: "#19202D",
   fontSize: "20px",
   fontWeight: "700",
   margin: "2% 0",
@@ -94,13 +90,11 @@ export const Description = styled(Typography)(() => ({
 }));
 
 export const Requirements = styled(Typography)(() => ({
-  color: "#19202D",
   fontSize: "20px",
   fontWeight: "700",
 }));
 
 export const ApplyButtonDiv = styled(Box)(() => ({
-  backgroundColor: "#FFFFFF",
   borderRadius: "6px",
   padding: "5%",
   marginTop: "5%",
