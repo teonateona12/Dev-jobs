@@ -61,11 +61,14 @@ export default function Filter({ activeTheme }: any) {
         <FilterCont sx={{ display: { xs: "none", md: "flex" } }}>
           <SearchLocationDiv>
             <Box component="img" src="assets/searchLocation.svg" />
-            <input
+            <Input
+              sx={{
+                backgroundColor: activeTheme.palette.secondary.main,
+              }}
               onChange={(e) => setLocation(e.target.value)}
               type="text"
               placeholder="Filter by location…"
-            ></input>
+            ></Input>
           </SearchLocationDiv>
         </FilterCont>
         <FilterCont sx={{ display: { xs: "none", md: "flex" } }}>

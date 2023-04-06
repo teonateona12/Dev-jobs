@@ -6,7 +6,6 @@ import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 
 export default function Home({ activeTheme }: any) {
-  console.log(activeTheme);
   const router = useRouter();
   const inputValue = useSelector(
     (store: { search: { input: string } }) => store.search.input
