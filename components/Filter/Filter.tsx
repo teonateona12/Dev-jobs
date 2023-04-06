@@ -54,6 +54,9 @@ export default function Filter({ activeTheme }: any) {
             sx={{
               order: { md: "1" },
             }}
+            onClick={() => {
+              dispatch(updateInput(input));
+            }}
             component="img"
             src="assets/search.svg"
           />
